@@ -8,9 +8,8 @@ class Settings(BaseSettings):
     FXCM_CONNECTION: str = "Demo"
 
     class Config:
-        env_file = ".env"
         env_file_encoding = "utf-8"
-        prefix = "TRADING_GATEWAY_"
+        env_prefix = "TRADING_GATEWAY_"
 
 
 settings = Settings()
