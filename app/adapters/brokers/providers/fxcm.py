@@ -1,4 +1,5 @@
 import logging
+import pandas as pd
 from datetime import datetime
 
 
@@ -76,7 +77,7 @@ class FXCMBroker(AbstractBroker):
                 if current_unit == fxcorepy.O2GTimeFrameUnit.TICK:
                     ticks = [
                         TickDTO(
-                            date=row["Date"],
+                            date=pd.to_datetime(row["Date"]).to_pydatetime(),
                             bid=row["Bid"],
                             ask=row["Ask"],
                         )
@@ -86,7 +87,7 @@ class FXCMBroker(AbstractBroker):
                 else:
                     candles = [
                         CandleDTO(
-                            date=row["Date"],
+                            date=pd.to_datetime(row["Date"]).to_pydatetime(),
                             bid_open=row["BidOpen"],
                             bid_high=row["BidHigh"],
                             bid_low=row["BidLow"],
