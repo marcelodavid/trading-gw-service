@@ -220,3 +220,6 @@ __marimo__/
 
 # mac specific files
 .DS_Store
+
+# history
+History

@@ -1,7 +1,6 @@
-version: '3.8'
-
 services:
   trading-gateway:
+    platform: linux/amd64
     build:
       context: .
       target: development
@@ -9,9 +8,6 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    environment:
-      - TRADING_GATEWAY_FXCM_USER_ID=D161658767
-      - TRADING_GATEWAY_FXCM_PASSWORD=vW0fz
-      - TRADING_GATEWAY_FXCM_URL=http://www.fxcorporate.com/Hosts.jsp
-      - TRADING_GATEWAY_FXCM_CONNECTION=Demo
+    env_file:
+      - .env
     command: uvicorn app.entrypoints.fastapi.main:app --host 0.0.0.0 --port 8000 --reload
