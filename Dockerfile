@@ -37,6 +37,7 @@ FROM base as development
 # devcontainer dependencies and utils
 RUN apt-get update && apt-get install --no-install-recommends -y \
     sudo git bash-completion vim ssh wget which \
+    procps libatomic1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Create devcontainer user and add it to sudoers
